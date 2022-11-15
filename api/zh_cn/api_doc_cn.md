@@ -228,28 +228,55 @@ REST API
 1. 接口地址: /open/api/user/account
 2. 接口说明: (get请求)资产余额
 
-|参数|    填写类型|   说明|
-|--------|--------|--------|
-|api_key|   必填| api_key|
-|time|  必填| 时间戳|
-|sign|  必填| 签名|
+| 参数    | 填写类型 | 说明    |
+| ------- | -------- | ------- |
+| api_key | 必填     | api_key |
+| sign    | 必填     | 签名    |
+| time    | 必填     | 时间戳  |
 
 返回值:
 
-|字段|    实例| 解释|
+|字段    |    实例| 解释|
 |--------|--------|--------|
-|code|  0|   |
-|msg|   "suc"|  code>0失败|
-|data|  {<br>"total_asset":432323.23,<br>"coin_list":[<br>{"coin":"btc","normal":32323.233,"locked":32323.233,"btcValuatin":112.33},<br>{"coin":"ltc","normal":32323.233,"locked":32323.233,"btcValuatin":112.33},<br>{"coin":"bch","normal":32323.233,"locked":32323.233,"btcValuatin":112.33},<br>]<br>}<br>|total_asset:总资产<br>normal:余额账户<br>locked：冻结账户<br>btcValuatin：BTC估值|
+|code    |  0     |        |
+|msg     |   "suc"|  code>0失败 |
+|data    |  如下  | total_asset:总资产<br>normal:余额账户<br>locked：冻结账户<br>btcValuatin：BTC估值|
+
+```json
+{
+    "total_asset": 432323.23,
+    "coin_list": [
+        {
+            "coin": "btc",
+            "normal": 32323.233,
+            "locked": 32323.233,
+            "btcValuatin": 112.33
+        },
+        {
+            "coin": "ltc",
+            "normal": 32323.233,
+            "locked": 32323.233,
+            "btcValuatin": 112.33
+        },
+        {
+            "coin": "bch",
+            "normal": 32323.233,
+            "locked": 32323.233,
+            "btcValuatin": 112.33
+        }
+    ]
+}
+```
+
 ---
 ### <span id="2">获取全部委托</span>
 
 1. 接口地址:/open/api/v2/all_order
 2. 接口说明:(get请求)获取全部委托
-3、开始时间，结束时间不能相差10分钟，
-4、没有开始时间，结束时间时，默认前10分钟数据
+3. 开始时间，结束时间不能相差`10分钟`，
+4. 没有开始时间，结束时间时，默认前10分钟数据
 
-* 旧接口 /open/api/all_order 仍保留,但已经不建议使用
+* 旧接口 `/open/api/all_order` 仍保留,但已经不建议使用
 
 * v2版本变化: 去掉了结果返回值中的tradeList成交记录,提升效率;如果需要单一订单的成交信息,可以使用 /open/api/order_info 接口单独去查
 
@@ -417,7 +444,7 @@ REST API
 ---
 ###  <span id="4">取消委托单</span>
 
-1. 接口地址:/open/api/cancel_order
+1. 接口地址: /open/api/cancel_order
 2. 接口说明:(post请求)取消委托单
 
 |参数|    填写类型|   说明|
