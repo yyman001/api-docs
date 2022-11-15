@@ -271,7 +271,7 @@ REST API
 |code|  0|   |
 |msg|   "suc"|  code>0失败|
 |data|  如下:|
-```
+```json
 {
     "count":10,
     "orderList":[
@@ -351,7 +351,7 @@ REST API
 |code|  0|   |
 |msg|   "suc"|  code>0失败|
 | data| 如下:|
-```
+```json
 {
     "count":22,
     "resultList":[
@@ -522,7 +522,7 @@ REST API
 |code|  0|   
 |msg|   "suc"|  code>0失败|
 |data|  如下：|返回值说明<br>date: 返回数据时服务器时间 <br>symbol: 交易对（交易对1(base)简称_交易对2(quote)简称） <br>buy: 买一价 <br>high: 最高价 <br>last: 最新成交价 <br>low: 最低价 <br>sell: 卖一价 <br>vol: 成交量(最近的24小时)<br>rose:涨跌幅|
-```
+```json
 {
    "date": 1534335607859,
    "ticker": [
@@ -613,7 +613,7 @@ REST API
 |msg|   "suc"|  code>0失败|
 |data|  如下：|
 
-```
+```json
 [
         [
             1514445780,  //时间戳
@@ -663,7 +663,7 @@ REST API
 |code|  0   | 
 |msg|   "suc"|  code>0失败|
 |data|  如下：|
-```
+```json
 {
     "high": 1,//最高值
     "vol": 10232.26315789,//交易量
@@ -706,7 +706,7 @@ REST API
 |code|  0   | 
 |msg|   "suc"|  code>0失败|
 |data|  如下：|
-```
+```json
 [
         {
             "amount": 0.55,//成交量
@@ -741,10 +741,6 @@ REST API
 |etc|   etccny| etcbtc| etcusdt|
 |eth|   ethcny| ethbtc| ethusdt|
 |ltc|   ltccny| ltcbtc| ltcusdt|
-
-
-
-
 
 
 ---
@@ -798,7 +794,7 @@ REST API
 |code|  0|   
 |msg|   "suc"|  code>0失败|
 |data|  如下：|
-```
+```json
 {  
     "tick":{
         "asks":[//卖盘
@@ -903,7 +899,7 @@ REST API
 |code|  0|   
 |msg|   "suc"|  code>0失败|
 |data|  如下:|订单状态(status)说明：<br>INIT(0,"初始订单，未成交未进入盘口"),<br>NEW_(1,"新订单，未成交进入盘口"),<br>FILLED(2,"完全成交"),<br>PART_FILLED(3,"部分成交"),<br>CANCELED(4,"已撤单"),<br>PENDING_CANCEL(5,"待撤单"),<br>EXPIRED(6,"异常订单");|
-```
+```json
 {
     "count":10,
     "resultList":[
@@ -980,7 +976,7 @@ REST API
 |code|  0|   
 |msg|   "suc"|  code>0失败|
 |data|  如下:|
-```
+```json
 {
     "order_info":{
         "id":343,
@@ -1032,7 +1028,7 @@ REST API
 |code|  0|   
 |msg|   "suc"|  code>0失败|
 |data|  如下：|symbol 交易对<br>base_coin 基础币种<br>count_coin 计价货币<br>price_precision 价格精度位数（0为个位）<br>amount_precision 数量精度位数（0为个位）|
-```
+```json
 {
 "code": "0",
 "msg": "suc",
@@ -1107,7 +1103,7 @@ REST API
 |code|  0|“0” - > 成功<br>“100004” ->参数不合法<br>“100005” -> 签名错误<br>“100007” -> 非法IP<br>"110032" -> 用户无查询权限<br>“110020” -> 要查询的用户不存在|
 |msg|   "suc"|  code>0失败|
 |data|  如下：|balance_info 各个币种的资产信息<br>deposit_list 充值的流水信息|
-```
+```json
 {
 "balance_info":[
     {
@@ -1133,15 +1129,15 @@ REST API
 ###  <span id="19">订阅-K线行情</span>
 
 * 请求:
-```
+```json
 {"event":"sub","params":{"channel":"market_$base$quote_kline_[1min/5min/15min/30min/60min/1day/1week/1month]","cb_id":"自定义"}}
 ```
 * 返回订阅状态1次:
-```
+```json
 {"event_rep":"subed","channel":"market_$base$quote_kline_[1min/5min/15min/30min/60min/1day/1week/1month]","cb_id":"原路返回","ts":1506584998239,"status":"ok"}
 ```
 * 持续返回订阅消息:
-```
+```json
 {
     "channel":"market_$base$quote_kline_[1min/5min/15min/30min/60min/1day/1week/1month]",//订阅的交易对行情$base$quote表示btckrw等
     "ts":1506584998239,//请求时间
@@ -1163,16 +1159,16 @@ REST API
 
 
 * 请求:
-```
+```json
 {"event":"sub","params":{"channel":"market_$base$quote_ticker","cb_id":"自定义"}}
 ```
 * 返回订阅状态1次:
-```
+```json
 {"event_rep":"subed","channel":"market_$base$quote_ticker","cb_id":"原路返回","ts":1506584998239,"status":"ok","lower_frame":"0"} // lower_frame: 0 币对没下架、 1 币对下架
 
 ```
 * 持续返回订阅消息:
-```
+```json
 {
     "channel":"market_$base$quote_ticker",//订阅的交易对行情$base$quote表示btckrw等
     "ts":1506584998239,//请求时间
@@ -1197,18 +1193,18 @@ REST API
 
 
 * 请求:
-```
+```json
 {"event":"sub","params":{"channel":"market_$base$quote_depth_step[0-2]","cb_id":"自定义","asks":150,"bids":150}}
 ```
 * 返回订阅状态1次:
-```
+```json
 {"event_rep":"subed","channel":"market_$base$quote_depth_step[0-2]","cb_id":"原路返回","asks":150,"bids":150,"ts":1506584998239,"status":"ok"}
 ```
 
 * 注：第一次订阅成功会立刻返回一次全量数据， 另外server也会定期推个全量数据给前端  避免数据出问题
 
 * 全量：前端直接替换原有盘口
-```
+```json
 {
     "channel":"market_$base$quote_depth_step[0-2]",//$base$quote表示btckrw等,深度有3个维度，0、1、2
     "ts":1506584998239,//请求时间
@@ -1228,7 +1224,7 @@ REST API
 * 注： 增量盘口信息 前端只需要替换价格对应的数量即可， volume=0时删除， price与原有盘口某个价格段的price相等时更新volume,  新的price直接新增
 
 * 增量盘口信息（该盘口变化的价格段）
-```
+```json
 {
     "channel":"market_$base$quote_depth_step[0-2]",//$base$quote表示btckrw等,深度有3个维度，0、1、2
     "ts":1506584998239,//请求时间
@@ -1245,15 +1241,15 @@ REST API
 ###  <span id="22">订阅-深度盘口</span>
 
 * 请求:
-```
+```json
 {"event":"sub","params":{"channel":"market_$base$quote_depth_step[0-2]","cb_id":"自定义","asks":150,"bids":150}}
 ```
 * 返回订阅状态1次:
-```
+```json
 {"event_rep":"subed","channel":"market_$base$quote_depth_step[0-2]","cb_id":"原路返回","asks":150,"bids":150,"ts":1506584998239,"status":"ok"}
 ```
 * 持续返回订阅消息:
-```
+```json
 {
     "channel":"market_$base$quote_depth_step[0-2]",//$base$quote表示btckrw等,深度有3个维度，0、1、2
     "ts":1506584998239,//请求时间
@@ -1274,15 +1270,15 @@ REST API
 ### <span id="23">订阅-实时成交信息 </span>
 
 * 请求:
-```
+```json
 {"event":"sub","params":{"channel":"market_$base$quote_trade_ticker","cb_id":"自定义"}}
 ```
 * 返回订阅状态1次:
-```
+```json
 {"event_rep":"subed","channel":"market_$base$quote_trade_ticker","cb_id":"原路返回","ts":1506584998239,"status":"ok"}
 ```
 * 持续返回订阅消息:
-```
+```json
 {
     "channel":"market_$base$quote_trade_ticker",//订阅的交易对行情$base$quote表示btckrw等
     "ts":1506584998239,//请求时间
@@ -1321,11 +1317,11 @@ REST API
 * 增加请求参数endIdx，pageSize（最多300，默认300条数据）,如果endIdx为空，则返回最近300条历史数据
 
 * 请求:
-```
+```json
 {"event":"req","params":{"channel":"market_$base$quote_kline_[1min/5min/15min/30min/60min/1day/1week/1month]","cb_id":"自定义","since":"1506602880"}}//since缺省时返回最新300条，有值时返回大于since的最多1小时数据，since有强校验，不能早于当前1小时  since取到59
 ```
 * 返回一次历史数据:
-```
+```json
 {
     "event_rep":"rep","channel":"market_$base$quote_kline_[1min/5min/15min/30min/60min/1day/1week/1month]","cb_id":"原路返回",
     "since":"1506602880",//since缺省时返回最新300条，有值时返回大于since的最多1小时数据，since有强校验，不能早于当前1小时
@@ -1357,11 +1353,11 @@ REST API
 ### <span id="25">请求-成交历史数据 </span>
 
 * 请求:
-```
+```json
 {"event":"req","params":{"channel":"market_$base$quote_trade_ticker","cb_id":"自定义","top":200}}
 ```
 * 直接返回成交信息:
-```
+```json
 {
     "event_rep":"rep","channel":"market_$base$quote_trade_ticker","cb_id":"原路返回","ts":1506584998239,"status":"ok",
     "top":200,//最大支持200
@@ -1392,11 +1388,11 @@ REST API
 ### <span id="26">请求-首页24行情数据</span>
 
 * 请求方式:
-```
+```json
 {"event":"req","params":{"channel":"review"}}
 ```
 * 返回数据示例:
-```
+```json
 {
    event_rep: "rep",
    channel: "review",
@@ -1412,7 +1408,7 @@ REST API
 ## <span id="ws-api-java">ws-api Demo (java) </span>
 
 
-```
+```java
 
 package test;
 
