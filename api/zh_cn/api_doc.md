@@ -18,7 +18,8 @@
         - [数字](#b3)
         - [限流 - REST API](#b4)
 - [业务API参考](#b5)
-  - [open-api](#b6) ([调用 Demo](https://github.com/CoinUpGlobal/api-docs/blob/master/demo/demo.txt))
+  - [open-api]
+    -   [调用 Demo](./open-api/demo.md)
     -   [资产余额](./open-api/account.md)
     -   [获取全部委托](./open-api/all-order.md)
     -   [获取全部成交记录](./open-api/all-trade.md)
